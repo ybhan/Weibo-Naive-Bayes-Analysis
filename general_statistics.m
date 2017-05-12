@@ -1,4 +1,4 @@
-% May 11, 2017
+% May 12, 2017
 % Edited by Jingbo Gao
 
 % plot the PIE graph of the proportion of MALE and FEMALE users
@@ -7,34 +7,65 @@ sum_male = sum([data.gender]);
 sum_female = size(data, 2) - sum_male;
 figure;
 subplot(1, 2, 1);
-pie([sum_male, sum_female],{'Male','Female'});
-title('The Proportion of Male and Female Users');
+pie([sum_male, sum_female]);
+legend({'Male', 'Female'});
+title('the Proportion of Male and Female Users');
+clear sum_female sum_male;
 
 % plot the PIE graph of the proportion of VERIFIED and UNVERIFIED users
 
 sum_isVerified = sum([data.isVerified]);
 sum_notVerified = size(data, 2) - sum_isVerified;
 subplot(1, 2, 2);
-pie([sum_isVerified, sum_notVerified], {'Verified', 'Not Verified'});
-title('The Proportion of Verified and Unverified Users');
+pie([sum_isVerified, sum_notVerified]);
+legend({'Verified', 'Not Verified'},'Location','SouthEast');
+title('the Proportion of Verified and Unverified Users');
+clear sum_isVerified sum_notVerified;
 
 % plot the HIST graph of the TIME users sign up
 % plot the trend lines
-% put some text on the peak and valley values
 
-sum_time = zeros(1, max([tmp.year]) - min([tmp.year]) + 1);
 tmp = [data.time];
-for year = min([tmp.year]) : max([tmp.year])
-    sum_time(year - min([tmp.year]) + 1) = sum([tmp.year] == year);
-end
 figure;
-bar(min([tmp.year]) : max([tmp.year]), sum_time);
+h = histogram([tmp.year] + 1 / 12 * [tmp.month]);
+hold on;
+h_x = h.BinEdges(1 : end - 1) + 0.5 * h.BinWidth;
+h_y = h.Values;
+plot(h_x, h_y, 'LineWidth', 1.5);
+xlabel('Year');
+ylabel('Users');
+title('the Distribution of the Time Users Sign Up');
+h_x = h.BinEdges(1 : end - 1) + 0.1 * h.BinWidth;
+h_y = h.Values + 5;
+text(h_x, h_y, int2str(h.Values(:)));
+hold off;
+clear tmp h h_x h_y h_max;
 
-% plot the PIE graph of the distribution of PROVINCE
+% plot the ROSE graph of the distribution of PROVINCE
 
-% code here
+pro_size = max([data.province]) - min([data.province]) + 1;
+[pro_t, pro_r] = rose([data.province] / pro_size * 2 * pi, pro_size);
+figure;
+pax = polaraxes;
+polarplot(pro_t, pro_r);
+pax.ThetaTick = 5 : 10 : 360;
+pax.ThetaTickLabel = {...
+    '??', '??', '??', '??', '??', '??', '??', '??', '??', '??',...
+    '??', '???', '??', '??', '??', '??', '??', '??', '??', '??',...
+    '??', '??', '??', '??', '??', '??', '??', '??', '??', '??',...
+    '??', '??', '??', '??', '??', '??'};
+title('the Distribution of Province');
+clear h pax pro_r pro_size pro_t;
 
-% plot the BOXPLOT graph of FOLLOW_COUNT, FOLLOWER_COUNT and TWEET_COUNT
-
-% code here
-
+% tweet_from
+tmp = [data.tweet];
+tf = [tmp.tweet_from];
+tf_y = [sum(tf == 2) 0;sum(tf == 1) sum(tf == 3)];
+figure;
+bar([1 2], tf_y, 0.5, 'stacked');
+xlabel('Ways of Tweeting');
+ylabel('Number of Tweets');
+title('the Proportion of Tweeting Ways');
+legend({'Official Ways', 'Third Party Ways'}, 'Location', 'NorthWest');
+set(gca, 'XTickLabel', {'Website', 'Mobile'});
+clear tf tf_y tmp;
