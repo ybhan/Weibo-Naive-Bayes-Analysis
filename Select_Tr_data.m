@@ -3,5 +3,5 @@
 
 % Select 99 lines of data randomly, and save as Tr_data.mat.
 
-tr_data = data( randi(999,99,1) );
-save Tr_data tr_data;
+Tr_data = data( randi(999,99,1) );
+save Tr_data Tr_data;

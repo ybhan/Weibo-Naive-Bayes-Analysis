@@ -10,13 +10,13 @@
 
 Active_Users = [2,5,9,13,15,16,17,18,21,26,29,30,34,39,40,46,51,53,55,58,62,63,65,68,69,70,71,72,75,76,78,84,90,92,94,99];
 for i = 1:36
-    tr_data(Active_Users(i)).isActive = 1;
+    Tr_data(Active_Users(i)).isActive = 1;
     try
         for j = Active_Users(i)+1 : Active_Users(i+1)-1
-            tr_data(j).isActive = 0;
+            Tr_data(j).isActive = 0;
         end
     catch
         continue
     end
 end
-save Tr_data tr_data;
+save Tr_data Tr_data;
