@@ -4,6 +4,7 @@ function [t] = AverageIntervalOfTweets(data)
 
 % May 14, 2017
 % Edited by Jingbo Gao
+
     t = zeros(1, size(data, 2));
     for i = 1 : size(data, 2)
         time = [data(i).tweet.time];
