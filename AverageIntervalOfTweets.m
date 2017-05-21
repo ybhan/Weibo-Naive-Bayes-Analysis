@@ -1,6 +1,6 @@
 function [t] = AverageIntervalOfTweets(data)
 % AVERAGEINTERVALOFTWEETS(data) returns the average time of tweets'
-% interval. The value is NaN means that his/her tweets count is 1.
+% interval. The value NaN means that his/her tweet count is 1.
 
 % May 14, 2017
 % Edited by Jingbo Gao
