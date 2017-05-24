@@ -1,3 +1,9 @@
+% May 24, 2017
+% Edited by Jingbo Gao
+
+% plot a china MAP and use the depth of color to illustrate the
+% distribution of active users
+
 load ../Weibodata.mat
 load ../Active_users.mat
 load chinese_name.mat
@@ -65,7 +71,9 @@ step = round(max_ddata / 11);
 set(hcb, 'YTick', (0 : 0.1 : 1));
 set(hcb, 'YTickLabel', num2cell(0 : step : max_ddata));
 
-%
+% plot a china MAP and use the depth of color to illustrate the
+% distribution of ALL of the users
+
 for i = 1 : length(ddata)
     for j = 1 : length(pro_name)
         if strcmp(pro_name(j), textddata(i))
