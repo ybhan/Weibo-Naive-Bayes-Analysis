@@ -1,8 +1,9 @@
 function P = judge(Tr_data, data)
-    % JUDGE(Traingdata, Data) returns the matrix of probability that the
-    % user in Data is an active user, according to Trainingdata, by the
-    % method of Naive Bayes Algorithm.
-
+    % JUDGE(Tr_data, data) Calculate the probability that the
+    % user in data is an active user, by the method of Naive Bayes
+    % Algorithm, according to Tr_data. Then returns the matrix of
+    % probabilities.
+    %
     % May 14, 2017
     % Edited by Jingbo Gao
     % May 21, 2017
@@ -21,8 +22,9 @@ function P = judge(Tr_data, data)
     sizeofTr_data_A = size(Tr_data_A, 2);
     sizeofTr_data_NA = size(Tr_data_NA, 2);
     
-    P = [];
-    for i = 1 : size(data,2)
+    n = size(data,2);
+    P = zeros(1,n);
+    for i = 1 : n
         tmp = ( [Tr_data_A.tweet_count] >= tc(i) & A_interval <= interval(i) );
         P_1 = sum(tmp) / sizeofTr_data;
         P_2 = sum(tmp) / sizeofTr_data_A;
