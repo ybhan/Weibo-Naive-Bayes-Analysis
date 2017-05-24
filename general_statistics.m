@@ -60,7 +60,8 @@ set(gca, 'ThetaTickLabel', pro_name);
 title('the Distribution of Province');
 clear pro_r pro_size pro_t pro_name pro_h;
 
-% tweet_from
+% plot the STACKED BAR graph of the proportion of WEBSITE and Mobile users
+
 tmp = [data.tweet];
 tf = [tmp.tweet_from];
 tf_y = [sum(tf == 2) 0;sum(tf == 1) sum(tf == 3)];

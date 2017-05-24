@@ -1,9 +1,9 @@
 function P = judge(Tr_data, data)
-    % JUDGE(Tr_data, data) Calculate the probability that the
+    % JUDGE(Tr_data, data) calculate the probability that the
     % user in data is an active user, by the method of Naive Bayes
     % Algorithm, according to Tr_data. Then returns the matrix of
     % probabilities.
-    %
+    
     % May 14, 2017
     % Edited by Jingbo Gao
     % May 21, 2017
