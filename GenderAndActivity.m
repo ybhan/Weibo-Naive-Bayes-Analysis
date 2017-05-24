@@ -33,4 +33,9 @@ title('Activity Ratio in Female Users');
 legend('Active','NotActive','Location','NorthEastOutside');
 
 [tbl,chi2,p] = crosstab([data.gender],[data.isActive]);
-fprintf('chi2 = %.3f ---> \nThe probability of "being active or not has a strong relation to gender" is %.3f%%.\nGenerally, female users are more likely to be active.\n',[chi2,(1-p)*100]);
+fprintf('%6s%-10s%-10s\n','','NotActive','Active');
+fprintf('%-8s%-10d%-10d\n','Female',tbl(1,1),tbl(1,2));
+fprintf('%-8s%-10d%-10d\n','Male',tbl(2,1),tbl(2,2));
+fprintf('\nchi2 = %.3f ---> \nThe probability of "being active or not has a strong relation to gender" is %.3f%%.\nGenerally, female users are more likely to be active.\n',[chi2,(1-p)*100]);
+
+clear X Y male active tbl chi2 p;
