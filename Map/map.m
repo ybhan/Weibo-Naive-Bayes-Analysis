@@ -7,8 +7,12 @@
 % website.
 
 % load neccessary data if needed
-%load ../Weibodata.mat
-%load ../Active_users.mat
+if ~exist('data', 'var')
+    load ../Weibodata.mat
+end
+if ~exist('Active_users', 'var')
+    load ../Active_users.mat
+end
 
 % load the map data from /maps/bou2_4p.shp
 sheng = shaperead('maps/bou2_4p.shp', 'UseGeoCoords', true);
