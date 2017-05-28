@@ -88,7 +88,7 @@ hcb = colorbar('EastOutside');
 step = round(max_ddata / 11);
 set(hcb, 'YTick', (0 : 0.1 : 1));
 set(hcb, 'YTickLabel', num2cell(0 : step : max_ddata));
-title('The Distribution of Active users in China');
+title('The Distribution of Active users in China', 'FontSize', 12);
 
 % The 2nd figure
 % plot a china MAP and use the depth of color to illustrate the
@@ -143,4 +143,4 @@ hcb = colorbar('EastOutside');
 step = round(max_ddata / 11);
 set(hcb, 'YTick', (0 : 0.1 : 1));
 set(hcb, 'YTickLabel', num2cell(0 : step : max_ddata));
-title('The Distribution of All users in China');
+title('The Distribution of All users in China', 'FontSize', 12);
