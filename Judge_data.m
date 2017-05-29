@@ -15,7 +15,7 @@
 % Naive Bayes Algorithm.
 
 P = judge(Tr_data,data);
-for i = 1:999
+for i = 1:size(data,2)
     if P(i) >= 0.75
         data(i).isActive = 1;
     else
@@ -24,6 +24,7 @@ for i = 1:999
 end
 Active_users = data([data.isActive]==1);
 NotActive_users = data([data.isActive]==0);
+
 clear P i;
 
 save WeiboData data;

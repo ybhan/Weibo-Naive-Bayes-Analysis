@@ -22,7 +22,7 @@ function [Like_average,Forward_average,Review_average,J] = origtweetstat(data)
     Review_average = zeros(1,n);
     J = 0;
     for i = 1 : n
-        A = [data(i).tweet];
+        A = data(i).tweet;
         A = A([A.isForwarded]==0);
         m = size(A,2);
         if( m == 0 )
